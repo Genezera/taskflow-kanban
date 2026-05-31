@@ -4,7 +4,7 @@ Kanban board to organize tasks with drag-and-drop, editing, and LocalStorage per
 
 ## Live demo
 
-- GitHub Pages (after enabling Pages in repo settings): `https://genezera.github.io/taskflow-kanban/`
+- GitHub Pages: `https://genezera.github.io/taskflow-kanban/`
 
 ## Features
 
