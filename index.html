@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark light" />
+    <title>TaskFlow Kanban</title>
+    <meta
+      name="description"
+      content="Quadro Kanban com drag-and-drop, edição e persistência em LocalStorage."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <header class="top">
+      <div class="container top__inner">
+        <div>
+          <a class="back" href="./README.md">README</a>
+          <h1 class="title">TaskFlow Kanban</h1>
+          <p class="subtitle">Drag-and-drop • Edição • LocalStorage</p>
+        </div>
+        <div class="actions">
+          <button class="btn btn--ghost" type="button" data-export>
+            Exportar JSON
+          </button>
+          <button class="btn btn--ghost" type="button" data-reset>
+            Limpar board
+          </button>
+          <button class="btn btn--primary" type="button" data-add-task>
+            Nova tarefa
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="board" aria-label="Quadro Kanban">
+        <div class="col" data-col="backlog">
+          <div class="col__header">
+            <h2 class="col__title">Backlog</h2>
+            <span class="col__count" data-count="backlog">0</span>
+          </div>
+          <div class="col__dropzone" data-dropzone="backlog" role="list"></div>
+        </div>
+
+        <div class="col" data-col="doing">
+          <div class="col__header">
+            <h2 class="col__title">Em progresso</h2>
+            <span class="col__count" data-count="doing">0</span>
+          </div>
+          <div class="col__dropzone" data-dropzone="doing" role="list"></div>
+        </div>
+
+        <div class="col" data-col="done">
+          <div class="col__header">
+            <h2 class="col__title">Concluído</h2>
+            <span class="col__count" data-count="done">0</span>
+          </div>
+          <div class="col__dropzone" data-dropzone="done" role="list"></div>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="dialog" data-dialog>
+      <form class="form" method="dialog" data-form>
+        <header class="form__header">
+          <h3 class="form__title" data-form-title>Nova tarefa</h3>
+          <button class="icon-btn" value="cancel" aria-label="Fechar" type="submit">
+            ✕
+          </button>
+        </header>
+
+        <label class="field">
+          <span class="field__label">Título</span>
+          <input class="field__input" name="title" required maxlength="70" />
+        </label>
+
+        <label class="field">
+          <span class="field__label">Descrição</span>
+          <textarea
+            class="field__input field__input--textarea"
+            name="description"
+            rows="4"
+            maxlength="240"
+          ></textarea>
+        </label>
+
+        <div class="row">
+          <label class="field">
+            <span class="field__label">Status</span>
+            <select class="field__input" name="status">
+              <option value="backlog">Backlog</option>
+              <option value="doing">Em progresso</option>
+              <option value="done">Concluído</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span class="field__label">Prioridade</span>
+            <select class="field__input" name="priority">
+              <option value="low">Baixa</option>
+              <option value="medium" selected>Média</option>
+              <option value="high">Alta</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="form__actions">
+          <button class="btn btn--ghost" type="button" data-delete hidden>
+            Excluir
+          </button>
+          <div class="spacer"></div>
+          <button class="btn btn--ghost" type="submit" value="cancel">
+            Cancelar
+          </button>
+          <button class="btn btn--primary" type="button" data-save>
+            Salvar
+          </button>
+        </div>
+
+        <input type="hidden" name="id" />
+      </form>
+    </dialog>
+
+    <div class="toast" role="status" aria-live="polite" aria-atomic="true" hidden data-toast></div>
+  </body>
+</html>
