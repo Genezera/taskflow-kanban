@@ -27,24 +27,24 @@ function seedTasks() {
   return [
     {
       id: uid(),
-      title: "Criar layout do board",
-      description: "Estruturar as colunas e o fluxo de drag-and-drop.",
+      title: "Build the board layout",
+      description: "Set up columns and the drag-and-drop flow.",
       status: "backlog",
       priority: "medium",
       createdAt: Date.now(),
     },
     {
       id: uid(),
-      title: "Persistir no LocalStorage",
-      description: "Salvar e recuperar tarefas automaticamente.",
+      title: "Persist to LocalStorage",
+      description: "Save and restore tasks automatically.",
       status: "doing",
       priority: "high",
       createdAt: Date.now(),
     },
     {
       id: uid(),
-      title: "Finalizar polish",
-      description: "Ajustar acessibilidade e micro-interações.",
+      title: "Add polish",
+      description: "Improve accessibility and micro-interactions.",
       status: "done",
       priority: "low",
       createdAt: Date.now(),
@@ -84,7 +84,7 @@ function openDialog(mode, task) {
   deleteBtn.hidden = true;
 
   if (mode === "edit" && task) {
-    formTitleEl.textContent = "Editar tarefa";
+    formTitleEl.textContent = "Edit task";
     form.elements.id.value = task.id;
     form.elements.title.value = task.title || "";
     form.elements.description.value = task.description || "";
@@ -92,7 +92,7 @@ function openDialog(mode, task) {
     form.elements.priority.value = task.priority || "medium";
     deleteBtn.hidden = false;
   } else {
-    formTitleEl.textContent = "Nova tarefa";
+    formTitleEl.textContent = "New task";
     form.elements.status.value = "backlog";
     form.elements.priority.value = "medium";
   }
@@ -117,9 +117,9 @@ function showToast(message) {
 }
 
 function priorityLabel(priority) {
-  if (priority === "high") return "Alta";
-  if (priority === "low") return "Baixa";
-  return "Média";
+  if (priority === "high") return "High";
+  if (priority === "low") return "Low";
+  return "Medium";
 }
 
 function createTaskCard(task) {
@@ -135,12 +135,12 @@ function createTaskCard(task) {
 
   const title = document.createElement("h3");
   title.className = "card__title";
-  title.textContent = task.title || "Sem título";
+  title.textContent = task.title || "Untitled";
 
   const edit = document.createElement("button");
   edit.className = "icon-btn";
   edit.type = "button";
-  edit.textContent = "Editar";
+  edit.textContent = "Edit";
   edit.addEventListener("click", () => openDialog("edit", task));
 
   top.appendChild(title);
@@ -155,15 +155,15 @@ function createTaskCard(task) {
 
   const pr = document.createElement("span");
   pr.className = `pill pill--${task.priority || "medium"}`;
-  pr.textContent = `Prioridade: ${priorityLabel(task.priority)}`;
+  pr.textContent = `Priority: ${priorityLabel(task.priority)}`;
 
   const st = document.createElement("span");
   st.className = "pill";
   st.textContent =
     task.status === "doing"
-      ? "Em progresso"
+      ? "In progress"
       : task.status === "done"
-        ? "Concluído"
+        ? "Done"
         : "Backlog";
 
   meta.appendChild(pr);
@@ -262,7 +262,7 @@ saveBtn?.addEventListener("click", () => {
 
   upsertTask(task);
   closeDialog();
-  showToast(existing ? "Tarefa atualizada." : "Tarefa criada.");
+  showToast(existing ? "Task updated." : "Task created.");
 });
 
 deleteBtn?.addEventListener("click", () => {
@@ -270,25 +270,25 @@ deleteBtn?.addEventListener("click", () => {
   if (!id) return;
   deleteTask(id);
   closeDialog();
-  showToast("Tarefa excluída.");
+  showToast("Task deleted.");
 });
 
 resetBtn?.addEventListener("click", () => {
-  const ok = confirm("Tem certeza que deseja limpar o board?");
+  const ok = confirm("Are you sure you want to clear the board?");
   if (!ok) return;
   state = { tasks: [] };
   saveState(state);
   render();
-  showToast("Board limpo.");
+  showToast("Board cleared.");
 });
 
 exportBtn?.addEventListener("click", async () => {
   const payload = JSON.stringify({ tasks: state.tasks }, null, 2);
   try {
     await navigator.clipboard.writeText(payload);
-    showToast("JSON copiado para a área de transferência.");
+    showToast("JSON copied to clipboard.");
   } catch {
-    showToast("Não foi possível copiar. Veja o JSON no console.");
+    showToast("Couldn't copy. Check the JSON in the console.");
     console.log(payload);
   }
 });
@@ -312,7 +312,7 @@ for (const [status, dz] of dropzones.entries()) {
     id = id || draggingId;
     if (!id) return;
     moveTask(id, status);
-    showToast("Tarefa movida.");
+    showToast("Task moved.");
   });
 }
 
@@ -322,4 +322,3 @@ document.addEventListener("keydown", (ev) => {
 });
 
 render();
-

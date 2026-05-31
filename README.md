@@ -1,35 +1,35 @@
 # TaskFlow Kanban
 
-Quadro Kanban para organizar tarefas com drag-and-drop, edição e persistência em LocalStorage. Feito para ser um projeto de portfólio (UI, estado, UX, acessibilidade básica).
+Kanban board to organize tasks with drag-and-drop, editing, and LocalStorage persistence. Built as a portfolio project (UI, state, UX, basic accessibility).
 
 ## Features
 
-- Drag-and-drop entre colunas (Backlog / Em progresso / Concluído)
-- Criar, editar e excluir tarefas
-- Persistência automática no LocalStorage
-- Exportar o estado do board como JSON (copia para a área de transferência)
-- Layout responsivo (desktop e mobile)
+- Drag and drop across columns (Backlog / In progress / Done)
+- Create, edit, and delete tasks
+- Automatic persistence via LocalStorage
+- Export board state as JSON (copies to clipboard)
+- Responsive layout (desktop and mobile)
 
-## Tecnologias
+## Tech
 
 - HTML + CSS
-- JavaScript (sem bibliotecas)
+- JavaScript (no libraries)
 - LocalStorage
 
-## Como rodar
+## Run
 
-- Abra `index.html` no navegador  
-  ou
-- Rode um servidor local na pasta do projeto:
+- Open `index.html` in your browser  
+  or
+- Run a local server in the project folder:
 
 ```bash
 python -m http.server 5173
 ```
 
-Abra: `http://localhost:5173/`
+Open: `http://localhost:5173/`
 
-## O que esse projeto demonstra
+## What this project demonstrates
 
-- Manipulação de DOM e renderização de listas
-- Modelagem de estado + persistência
-- Interações de drag-and-drop
+- DOM manipulation and list rendering
+- State modeling + persistence
+- Drag-and-drop interactions

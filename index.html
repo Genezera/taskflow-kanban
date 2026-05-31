@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,7 +7,7 @@
     <title>TaskFlow Kanban</title>
     <meta
       name="description"
-      content="Quadro Kanban com drag-and-drop, edição e persistência em LocalStorage."
+      content="Kanban board with drag-and-drop, editing, and LocalStorage persistence."
     />
     <link rel="stylesheet" href="./styles.css" />
     <script type="module" src="./app.js"></script>
@@ -18,24 +18,24 @@
         <div>
           <a class="back" href="./README.md">README</a>
           <h1 class="title">TaskFlow Kanban</h1>
-          <p class="subtitle">Drag-and-drop • Edição • LocalStorage</p>
+          <p class="subtitle">Drag & drop • Editing • LocalStorage</p>
         </div>
         <div class="actions">
           <button class="btn btn--ghost" type="button" data-export>
-            Exportar JSON
+            Export JSON
           </button>
           <button class="btn btn--ghost" type="button" data-reset>
-            Limpar board
+            Clear board
           </button>
           <button class="btn btn--primary" type="button" data-add-task>
-            Nova tarefa
+            New task
           </button>
         </div>
       </div>
     </header>
 
     <main class="container">
-      <section class="board" aria-label="Quadro Kanban">
+      <section class="board" aria-label="Kanban board">
         <div class="col" data-col="backlog">
           <div class="col__header">
             <h2 class="col__title">Backlog</h2>
@@ -46,7 +46,7 @@
 
         <div class="col" data-col="doing">
           <div class="col__header">
-            <h2 class="col__title">Em progresso</h2>
+            <h2 class="col__title">In progress</h2>
             <span class="col__count" data-count="doing">0</span>
           </div>
           <div class="col__dropzone" data-dropzone="doing" role="list"></div>
@@ -54,7 +54,7 @@
 
         <div class="col" data-col="done">
           <div class="col__header">
-            <h2 class="col__title">Concluído</h2>
+            <h2 class="col__title">Done</h2>
             <span class="col__count" data-count="done">0</span>
           </div>
           <div class="col__dropzone" data-dropzone="done" role="list"></div>
@@ -65,19 +65,19 @@
     <dialog class="dialog" data-dialog>
       <form class="form" method="dialog" data-form>
         <header class="form__header">
-          <h3 class="form__title" data-form-title>Nova tarefa</h3>
-          <button class="icon-btn" value="cancel" aria-label="Fechar" type="submit">
+          <h3 class="form__title" data-form-title>New task</h3>
+          <button class="icon-btn" value="cancel" aria-label="Close" type="submit">
             ✕
           </button>
         </header>
 
         <label class="field">
-          <span class="field__label">Título</span>
+          <span class="field__label">Title</span>
           <input class="field__input" name="title" required maxlength="70" />
         </label>
 
         <label class="field">
-          <span class="field__label">Descrição</span>
+          <span class="field__label">Description</span>
           <textarea
             class="field__input field__input--textarea"
             name="description"
@@ -91,31 +91,31 @@
             <span class="field__label">Status</span>
             <select class="field__input" name="status">
               <option value="backlog">Backlog</option>
-              <option value="doing">Em progresso</option>
-              <option value="done">Concluído</option>
+              <option value="doing">In progress</option>
+              <option value="done">Done</option>
             </select>
           </label>
 
           <label class="field">
-            <span class="field__label">Prioridade</span>
+            <span class="field__label">Priority</span>
             <select class="field__input" name="priority">
-              <option value="low">Baixa</option>
-              <option value="medium" selected>Média</option>
-              <option value="high">Alta</option>
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
             </select>
           </label>
         </div>
 
         <div class="form__actions">
           <button class="btn btn--ghost" type="button" data-delete hidden>
-            Excluir
+            Delete
           </button>
           <div class="spacer"></div>
           <button class="btn btn--ghost" type="submit" value="cancel">
-            Cancelar
+            Cancel
           </button>
           <button class="btn btn--primary" type="button" data-save>
-            Salvar
+            Save
           </button>
         </div>
 
