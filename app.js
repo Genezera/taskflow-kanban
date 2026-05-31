@@ -125,6 +125,7 @@ function priorityLabel(priority) {
 function createTaskCard(task) {
   const el = document.createElement("article");
   el.className = "card";
+  el.classList.add(`card--${task.priority || "medium"}`);
   el.draggable = true;
   el.dataset.taskId = task.id;
   el.setAttribute("role", "listitem");
